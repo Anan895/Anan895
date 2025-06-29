@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anan's Crib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            z-index: 5;
+        }
+
+        header {
+            top: 0;
+        }
+
+        footer {
+            bottom: 0;
+            font-size: 0.9em;
+        }
+
+        .teleport-buttons {
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            z-index: 10;
+        }
+
+        .teleport-buttons button {
+            display: block;
+            margin-bottom: 5px;
+            padding: 8px 12px;
+            background-color: #d94f4f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Anan's Crib</h1>
+    </header>
+
+    <div class="teleport-buttons">
+        <button onclick="teleportTo(0, 1.5, 0)">🏠 Center</button>
+        <button onclick="teleportTo(2, 1.5, 1)">📍 Spot 1</button>
+        <button onclick="teleportTo(-2, 1.5, -1)">📍 Spot 2</button>
+    </div>
+
+    <model-viewer src="assets/models/damagedHelmet.glb"
+                  ar
+                  auto-rotate
+                  camera-controls
+                  exposure="1"
+                  shadow-intensity="1"
+                  environment-image="neutral"
+                  style="width: 100vw; height: 100vh;">
+    </model-viewer>
+
+    <footer>
+        <small>Use the buttons to teleport | Best viewed in VR mode</small>
+    </footer>
+
+    <script>
+        function teleportTo(x, y, z) {
+            const viewer = document.querySelector('model-viewer');
+            viewer.cameraTarget = `${x}m ${y}m ${z}m`;
+        }
+    </script>
+
+</body>
+</html>
