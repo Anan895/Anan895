@@ -28,8 +28,23 @@ class App{
         
 		this.scene = new THREE.Scene();
         this.scene.add( this.dolly );
+
+        const welcomeText = document.createElement('div');
+        welcomeText.innerHTML = "<strong>Welcome to Anan's Crib</strong>";
+        welcomeText.style.position = 'absolute';
+        welcomeText.style.top = '10px';
+        welcomeText.style.left = '50%';
+        welcomeText.style.transform = 'translateX(-50%)';
+        welcomeText.style.background = 'rgba(255, 100, 100, 0.8)';
+        welcomeText.style.padding = '10px 20px';
+        welcomeText.style.color = 'white';
+        welcomeText.style.borderRadius = '10px';
+        welcomeText.style.fontSize = '18px';
+        welcomeText.style.zIndex = 10;
+        document.body.appendChild(welcomeText);
+
         
-		const ambient = new THREE.HemisphereLight(0xFFFFFF, 0xAAAAAA, 0.8);
+		const ambient = new THREE.HemisphereLight(0xFFCCCC, 0x884444, 0.9);
 		this.scene.add(ambient);
 
 		this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -135,6 +150,7 @@ class App{
                 obj.position.copy(pos);
                 college.add( obj );
                 
+                console.log('College model loaded successfully');
                 self.loadingBar.visible = false;
 			
                 self.setupXR();
